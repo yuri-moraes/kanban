@@ -15,7 +15,7 @@ function App() {
       </Box>
 
       <Box>
-        <Heading as='h2'>Quadro de tarefas</Heading>
+        <Heading as='h2' mb={"4"}>Quadro de tarefas</Heading>
         <TaskBoard/>
       </Box>
     </Box>
