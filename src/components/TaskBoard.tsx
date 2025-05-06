@@ -1,4 +1,4 @@
-import { Badge, Flex, Grid } from "@radix-ui/themes"
+import { Badge, Flex, Grid, ScrollArea } from "@radix-ui/themes"
 import type { Task } from "../entities/Task"
 import { TaskCard } from "./TaskCard"
 
@@ -35,30 +35,32 @@ export const TaskBoard: React.FC = ()=> {
 
 
     return (
-        <Grid columns={"3"} gap={"4"} minWidth={"64rem"}>
-            <Flex direction={"column"} gap={"4"}>
-                <Badge size={"3"} color="gray">
-                    Para Fazer (2)
-                </Badge>
+        <ScrollArea scrollbars="horizontal">
+            <Grid columns={"3"} gap={"4"} minWidth={"64rem"}>
+                <Flex direction={"column"} gap={"4"}>
+                    <Badge size={"3"} color="gray">
+                        Para Fazer (2)
+                    </Badge>
 
-                {tasksTodo.map((task)=> <TaskCard key={task.id} task={task}/>)}
-            </Flex>
+                    {tasksTodo.map((task)=> <TaskCard key={task.id} task={task}/>)}
+                </Flex>
 
-            <Flex direction={"column"} gap={"4"}>
-                <Badge size={"3"} color="brown">
-                    Em progresso (2)
-                </Badge>
-                {taksInProgress.map((task)=> <TaskCard key={task.id} task={task}/>)}
+                <Flex direction={"column"} gap={"4"}>
+                    <Badge size={"3"} color="brown">
+                        Em progresso (2)
+                    </Badge>
+                    {taksInProgress.map((task)=> <TaskCard key={task.id} task={task}/>)}
 
-            </Flex>
+                </Flex>
 
-            <Flex direction={"column"} gap={"4"}>
-                <Badge size={"3"} color="green">
-                    Concluídas (2)
-                </Badge>
-                {tasksDone.map((task)=> <TaskCard key={task.id} task={task}/>)}
+                <Flex direction={"column"} gap={"4"}>
+                    <Badge size={"3"} color="green">
+                        Concluídas (2)
+                    </Badge>
+                    {tasksDone.map((task)=> <TaskCard key={task.id} task={task}/>)}
 
-            </Flex>
-        </Grid>
+                </Flex>
+            </Grid>
+        </ScrollArea>
     )
 }
