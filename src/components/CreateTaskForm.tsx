@@ -1,7 +1,34 @@
 import { PlusIcon } from "@radix-ui/react-icons"
 import { Badge, Box, Button, Dialog, Flex, RadioGroup, Text, TextArea, TextField } from "@radix-ui/themes"
+import type { FormEventHandler } from "react"
+import { z } from "zod"
 
 export const CreateTaskForm: React.FC = ()=> {
+    
+    const CreateTaskSchema = z.object({
+        title: z.string(),
+        description: z.string(),
+        status: z.enum(["todo", "doing", "done"]),
+        priority: z.enum(["low", "medium", "high"])
+    })
+
+    const handleSubmit: FormEventHandler<HTMLFormElement> = async (ev)=> {
+        ev.preventDefault();
+
+        const formData = new FormData(ev.currentTarget);
+
+        const title = formData.get("title");
+        const description = formData.get("description");
+        const status = formData.get("status");
+        const priority = formData.get("priority")
+
+        ev.currentTarget.reset();
+
+        const taskData = CreateTaskSchema.parse({title, description, status, priority})
+
+        alert(JSON.stringify(taskData))
+    }
+
     return(
         <Dialog.Root>
             <Dialog.Trigger>
@@ -13,7 +40,7 @@ export const CreateTaskForm: React.FC = ()=> {
             <Dialog.Content maxWidth={"32rem"}>
                 <Dialog.Title>Nova tarefa</Dialog.Title>
                 <Dialog.Description size={"2"} mb={"4"}>Adicione novas tarefas ao quadro.</Dialog.Description>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <Flex direction={"column"} gap={"4"}>
                         <Box>
                             <Text as="label" htmlFor="title">Título</Text>
@@ -49,7 +76,7 @@ export const CreateTaskForm: React.FC = ()=> {
 
                             <Box>
                                 <Text as="div" mb={"2"}>Prioridade</Text>
-                                <RadioGroup.Root name="status" defaultValue="low">
+                                <RadioGroup.Root name="priority" defaultValue="low">
                                     <RadioGroup.Item value="low">
                                         <Badge color="sky">
                                             Baixa
