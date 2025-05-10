@@ -2,32 +2,33 @@ import { PlusIcon } from "@radix-ui/react-icons"
 import { Badge, Box, Button, Dialog, Flex, RadioGroup, Text, TextArea, TextField } from "@radix-ui/themes"
 import type { FormEventHandler } from "react"
 import { z } from "zod"
+import { useTasks } from "../hooks/useTasks"
 
-export const CreateTaskForm: React.FC = ()=> {
-    
-    const CreateTaskSchema = z.object({
-        title: z.string(),
-        description: z.string(),
-        status: z.enum(["todo", "doing", "done"]),
-        priority: z.enum(["low", "medium", "high"])
-    })
+const CreateTaskSchema = z.object({
+    title: z.string(),
+    description: z.string(),
+    status: z.enum(["todo", "doing", "done"]),
+    priority: z.enum(["low", "medium", "high"])
+})
+
+export const CreateTaskForm: React.FC = ()=> {    
+    const { createTask } = useTasks();
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (ev)=> {
         ev.preventDefault();
-
+        
         const formData = new FormData(ev.currentTarget);
-
+        
         const title = formData.get("title");
         const description = formData.get("description");
         const status = formData.get("status");
         const priority = formData.get("priority")
-
+        
         ev.currentTarget.reset();
-
+        
         const taskData = CreateTaskSchema.parse({title, description, status, priority})
-
-        alert(JSON.stringify(taskData))
-    }
+        await createTask(taskData);       
+    }   
 
     return(
         <Dialog.Root>

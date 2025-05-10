@@ -1,37 +1,15 @@
 import { Badge, Flex, Grid, ScrollArea } from "@radix-ui/themes"
 import type { Task } from "../entities/Task"
 import { TaskCard } from "./TaskCard"
+import { useTasks } from "../hooks/useTasks"
+
 
 export const TaskBoard: React.FC = ()=> {
+    const { tasks } = useTasks();
 
-    const tasksTodo: Task[] = [
-        {
-            "id": 2,
-            "title": "Reunião com a equipe",
-            "description": "Reunião para discutir o progresso do projeto e próximos passos.",
-            "status": "todo",
-            "priority": "high"
-        },
-    ]
-    const taksInProgress: Task[] = [
-        {
-            "id": 1,
-            "title": "Enviar relatório",
-            "description": "Enviar o relatório mensal para o departamento financeiro.",
-            "status": "doing",
-            "priority": "high"
-        },
-    ]
-    const tasksDone: Task[] = [
-        {
-            "id": 3,
-            "title": "Atualizar o site",
-            "description": "Fazer atualizações no site da empresa com novas informações.",
-            "status": "done",
-            "priority": "medium"
-        },
-    ]
-
+    const tasksTodo: Task[] = tasks?.filter(tasks => tasks.status === "todo") ?? []
+    const tasksInProgress: Task[] = tasks.filter(tasks => tasks.status === "doing") ?? []
+    const tasksDone: Task[] = tasks.filter(tasks => tasks.status === "done") ?? []
 
 
     return (
@@ -39,7 +17,7 @@ export const TaskBoard: React.FC = ()=> {
             <Grid columns={"3"} gap={"4"} minWidth={"64rem"}>
                 <Flex direction={"column"} gap={"4"}>
                     <Badge size={"3"} color="gray">
-                        Para Fazer (2)
+                        Para Fazer ({tasksTodo.length})
                     </Badge>
 
                     {tasksTodo.map((task)=> <TaskCard key={task.id} task={task}/>)}
@@ -47,15 +25,15 @@ export const TaskBoard: React.FC = ()=> {
 
                 <Flex direction={"column"} gap={"4"}>
                     <Badge size={"3"} color="brown">
-                        Em progresso (2)
+                        Em progresso ({tasksInProgress.length})
                     </Badge>
-                    {taksInProgress.map((task)=> <TaskCard key={task.id} task={task}/>)}
+                    {tasksInProgress.map((task)=> <TaskCard key={task.id} task={task}/>)}
 
                 </Flex>
 
                 <Flex direction={"column"} gap={"4"}>
                     <Badge size={"3"} color="green">
-                        Concluídas (2)
+                        Concluídas ({tasksDone.length})
                     </Badge>
                     {tasksDone.map((task)=> <TaskCard key={task.id} task={task}/>)}
 
