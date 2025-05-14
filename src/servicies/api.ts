@@ -19,7 +19,7 @@ export const tasksService = {
         return newTask;
     },
 
-    async updateTask(id: number, attributes: Partial<Omit<Task, "id">>): Promise<Task> {
+    async updateTask(id: string, attributes: Partial<Omit<Task, "id">>): Promise<Task> {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/tasks${id}`, {
             method: "PATCH",
             headers: {
@@ -31,7 +31,7 @@ export const tasksService = {
         return updatedTask;
     },
 
-    async deleteTask(id: number): Promise<void> {
-        await fetch(`${import.meta.env.VITE_API_URL}/tasks${id}`, {method:"DELETE ",});
+    async deleteTask(id: string): Promise<void> {
+        await fetch(`${import.meta.env.VITE_API_URL}/tasks/${id}`, {method:"DELETE",});
     }
 }

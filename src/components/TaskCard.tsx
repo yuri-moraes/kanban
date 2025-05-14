@@ -1,6 +1,7 @@
 import { Badge, Button, Card, Flex, Heading, Text } from "@radix-ui/themes"
 import type { Task, TaskPriority, TaskStatus } from "../entities/Task"
 import { useTasks } from "../hooks/useTasks"
+import {UpdateTaskForm} from "../components/UpdateTaskForm"
 
 interface TaskCardProps {
     task: Task
@@ -61,6 +62,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({task}) => {
                         {getActionText(task.status)}
                     </Button>
                 )}
+                <UpdateTaskForm task={task}/>
                 <Button color="red" onClick={()=> handleDelete(task.id)}>Excluir</Button>
             </Flex>
         </Card>

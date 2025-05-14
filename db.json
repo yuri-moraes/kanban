@@ -27,13 +27,6 @@
       "description": "Desenvolver os testes automatizados na nova funcionalidade do aplicativo.",
       "status": "todo",
       "priority": "medium"
-    },
-    {
-      "id": "4725",
-      "title": "teste",
-      "description": "teste",
-      "status": "todo",
-      "priority": "low"
     }
   ]
 }
