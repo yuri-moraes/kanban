@@ -16,18 +16,21 @@ export const TasksContextProvider: React.FC<TasksContextProviderProps> = ({ chil
 
     const createTask = async (attributes: Omit<Task, "id">) => {
         const newTask = await tasksService.createTask(attributes)
+        setTasks((currentState) => [...currentState, newTask])
+    }
+
+    const updateTask = async (id: string, attributes: Partial<Omit<Task, "id">>) => {
         setTasks((currentState) => {
-            const updatedTasks = [...currentState, newTask]
+            const updatedTasks = [...currentState];
+            const taskIndex = updatedTasks.findIndex((task)=> task.id === id);
+            Object.assign(updatedTasks[taskIndex], attributes)
             return updatedTasks
         })
     }
 
-    const updateTask = async (id: number, attributes: Partial<Omit<Task, "id">>) => {
-
-    }
-
-    const deleteTask = async (id: number) => {
-        
+    const deleteTask = async (id: string) => {
+        await tasksService.deleteTask(id);
+        setTasks((currentState)=> currentState.filter((task)=> task.id !== id))
     }
 
     
