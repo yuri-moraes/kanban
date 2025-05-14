@@ -1,8 +1,9 @@
 # React Kanban - Task Management App
 
-Este é um aplicativo de gestão de tarefas em formato de quadro Kanban, desenvolvido com Vite, React, TypeScript, Radix UI e Zod. O app permite a criação, atualização, exclusão e organização de tarefas em diferentes status, com diferentes níveis de prioridade. O backend é simulado utilizando o json-server, oferecendo um CRUD completo de tarefas. :contentReference[oaicite:0]{index=0}
+Este é um aplicativo de gestão de tarefas em formato de quadro Kanban, desenvolvido com Vite, React, TypeScript, Radix UI e Zod. O app permite a criação, atualização, exclusão e organização de tarefas em diferentes status, com diferentes níveis de prioridade. O backend é simulado utilizando o json-server, oferecendo um CRUD completo de tarefas.
 
-![Kanban Preview]([https://github.com/isaacpontes/react-kanban/raw/main/src/assets/kanban-preview.png](https://private-user-images.githubusercontent.com/43050548/378665835-1767f3f0-1763-42cb-ab00-b0a78b571b41.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDcyMzM0NDUsIm5iZiI6MTc0NzIzMzE0NSwicGF0aCI6Ii80MzA1MDU0OC8zNzg2NjU4MzUtMTc2N2YzZjAtMTc2My00MmNiLWFiMDAtYjBhNzhiNTcxYjQxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTE0VDE0MzIyNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWZhYzY4NzE4YzU5YjE5ZDM1MmFlZTkyYmE5ZGJjN2MyOWQ2ZjY1MjQxZTYzZjA4MDMyMGY4YTliODQxYWY0MjImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.x8yBiWL_bmOFFylolDL2kgGNizRHNikHsDj421hTrmw))
+![Kanban preview](public/preview.png)
+
 
 ## Funcionalidades
 
@@ -14,7 +15,7 @@ Este é um aplicativo de gestão de tarefas em formato de quadro Kanban, desenvo
 - Hooks React:  
   - `useState`: Gerenciamento de estados locais.  
   - `useEffect`: Efeitos colaterais para buscar e atualizar dados.  
-  - `useContext`: Compartilhamento de estados globais entre componentes. :contentReference[oaicite:1]{index=1}
+  - `useContext`: Compartilhamento de estados globais entre componentes.
 
 ## Tecnologias Utilizadas
 
@@ -23,7 +24,7 @@ Este é um aplicativo de gestão de tarefas em formato de quadro Kanban, desenvo
 - **TypeScript**: Superconjunto de JavaScript que adiciona tipagem estática.  
 - **Radix UI**: Conjunto de componentes acessíveis e não opinativos para construção da interface.  
 - **Zod**: Biblioteca para validação de esquemas e tipos.  
-- **json-server**: Ferramenta que simula uma API REST completa com base em um arquivo JSON. :contentReference[oaicite:2]{index=2}
+- **json-server**: Ferramenta que simula uma API REST completa com base em um arquivo JSON.
 
 ## Instalação e Execução
 
@@ -80,7 +81,6 @@ Este é um aplicativo de gestão de tarefas em formato de quadro Kanban, desenvo
 
    ````
    http://localhost:5173
-   ``` :contentReference[oaicite:3]{index=3}
    ````
 
 ## Estrutura do Projeto
@@ -94,8 +94,4 @@ Este é um aplicativo de gestão de tarefas em formato de quadro Kanban, desenvo
 
 ## Licença
 
-Este projeto está licenciado sob a licença **MIT** – consulte o arquivo [LICENSE](https://github.com/isaacpontes/react-kanban/blob/main/LICENSE) para mais detalhes. ([GitHub][1])
-
-```
-::contentReference[oaicite:5]{index=5}
-```
+Este projeto está licenciado sob a licença **MIT** – consulte o arquivo [LICENSE](https://github.com/yuri-moraes/kanban/blob/main/LICENSE) para mais detalhes
